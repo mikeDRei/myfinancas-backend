@@ -4,7 +4,7 @@
 
 npm:
 ```
-npm install
+npm install para instalar as dependencias.
 configure seu banco de dados com as credenciais necessarias no arquivo config.json
 sequelize:
 npx sequelize-cli db:migrate

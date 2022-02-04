@@ -113,7 +113,38 @@ module.exports = {
 
 
         } catch (error) {
-            return response.json({msg:"Erro ao excluir " + error});
+            return response.json({ msg: "Erro ao excluir " + error });
         }
+    },
+    async findById(request, response) {
+        try {
+            const { id } = request.params;
+
+            var saldo = 0;
+            var soma = 0;
+            
+            const Financa = await financa.findAll({
+                where: {
+                    categoria_id: parseInt(id)
+                },
+                include: {
+                    all: true
+                }
+            });
+
+            if (Financa.length === 0) {
+                return response.json({ saldo });
+            }
+            else {
+                for (soma of Financa) {
+                    saldo = saldo + soma.valor;
+                }
+                return response.json({ saldo });
+            }
+
+        } catch (error) {
+            return response.json("Erro ao listar financas por categoria " + error);
+        }
+
     }
 }

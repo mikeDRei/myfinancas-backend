@@ -50,7 +50,7 @@ module.exports = {
             const Categoria = await categoria.findAndCountAll({
                 order: [
                     ['id', 'ASC']
-                ],     
+                ],
                 limit: limite,
                 offset: parseInt(page)
             })
