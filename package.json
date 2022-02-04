@@ -1,0 +1,25 @@
+{
+  "name": "myfinancas",
+  "version": "1.0.0",
+  "description": "Aplicação para controle financeiro (simples)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeDRei/myfinancas-backend.git"
+  },
+  "author": "mikeDRei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeDRei/myfinancas-backend/issues"
+  },
+  "homepage": "https://github.com/mikeDRei/myfinancas-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.15.0"
+  }
+}
