@@ -1,8 +1,8 @@
-const res = require('express/lib/response');
 const sequelize = require('sequelize');
 const model = require('../models');
 const Op = sequelize.Op;
 const financa = model.Financa;
+const categoria = model.Categoria;
 
 module.exports = {
     async create(request, response) {
@@ -116,13 +116,19 @@ module.exports = {
             return response.json({ msg: "Erro ao excluir " + error });
         }
     },
-    async findById(request, response) {
+    
+     async findById(request, response) {
         try {
             const { id } = request.params;
 
             var saldo = 0;
             var soma = 0;
-            
+
+            const Categoria = await categoria.findOne({
+                where: { id: id }
+            });
+
+            console.log(Categoria);
             const Financa = await financa.findAll({
                 where: {
                     categoria_id: parseInt(id)
@@ -133,13 +139,13 @@ module.exports = {
             });
 
             if (Financa.length === 0) {
-                return response.json({ saldo });
+                return response.json({ Categoria, saldo });
             }
             else {
                 for (soma of Financa) {
                     saldo = saldo + soma.valor;
                 }
-                return response.json({ saldo });
+                return response.json({ Categoria, saldo });
             }
 
         } catch (error) {
@@ -147,4 +153,5 @@ module.exports = {
         }
 
     }
+    
 }
