@@ -78,6 +78,7 @@ module.exports = {
             return response.json("Erro ao listar " + error);
         }
     },
+    
     async findAllDate(request, response) {
         try {
             const { page, dataInicial, dataFinal } = request.params;
@@ -91,6 +92,9 @@ module.exports = {
                         [Op.gte]: dataInicial,
                         [Op.lte]: dataFinal
                     }
+                },
+                include:{
+                    all:true
                 }
 
             });
